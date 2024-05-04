@@ -1,0 +1,9 @@
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.note-list__empty {
+  text-align: center;
+}

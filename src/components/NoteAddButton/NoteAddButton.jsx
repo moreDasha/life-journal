@@ -3,7 +3,8 @@ import CardButton from '../CardButton/CardButton';
 
 function NoteAddButton() {
   return (
-    <CardButton>
+    <CardButton className="note-add-button">
+      <span className="note-add-button__icon"></span>
       Новое воспоминание
     </CardButton>
   );

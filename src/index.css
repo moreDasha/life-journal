@@ -9,4 +9,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding: 20px;
+  min-width: 360px;
+  min-height: 100%;
+}
+
+img {
+  display: block;
+}
