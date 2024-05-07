@@ -1,4 +1,4 @@
-import './NoteList.css';
+import styles from './NoteList.module.css';
 import CardButton from '../CardButton/CardButton';
 import JournalItem from '../JournalItem/JournalItem';
 
@@ -6,8 +6,8 @@ function NoteList({ items }) {
 
   if (items.length === 0) {
     return (
-      <div className="note-list">
-        <p className="note-list__empty">Добавьте новое воспоминание</p>
+      <div className={styles['note-list']}>
+        <p className={styles['note-list__empty']}>Добавьте новое воспоминание</p>
       </div>
     );
   } else {
@@ -20,9 +20,9 @@ function NoteList({ items }) {
     };
 
     return (
-      <div className="note-list">
+      <div className={styles['note-list']}>
         {items.sort(sortJournalItems).map(el => (
-            <CardButton key={el.id}>
+            <CardButton className={styles['note-list-item']} key={el.id}>
               <JournalItem
                 title={el.title}
                 text={el.text}

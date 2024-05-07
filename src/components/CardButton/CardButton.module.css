@@ -1,12 +1,10 @@
 .card-button {
-  padding: 20px;
   border: none;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.03);
   color: #ffff;
   cursor: pointer;
   transition: background-color .3s;
-  display: block;
   width: 100%;
 }
 

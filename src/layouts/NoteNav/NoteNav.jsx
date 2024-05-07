@@ -1,8 +1,8 @@
-import './NoteNav.css';
+import styles from './NoteNav.module.css';
 
 function NoteNav({ children }) {
   return (
-    <nav className="note-nav">
+    <nav className={styles['note-nav']}>
       {children}
     </nav>
   );

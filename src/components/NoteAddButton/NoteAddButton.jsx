@@ -1,10 +1,10 @@
-import './NoteAddButton.css';
+import styles from './NoteAddButton.module.css';
 import CardButton from '../CardButton/CardButton';
 
 function NoteAddButton() {
   return (
-    <CardButton className="note-add-button">
-      <span className="note-add-button__icon"></span>
+    <CardButton className={styles['note-add-button']}>
+      <span className={styles['note-add-button__icon']}></span>
       Новое воспоминание
     </CardButton>
   );

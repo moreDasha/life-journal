@@ -1,0 +1,11 @@
+.input-small-name {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.input-small-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+}

@@ -13,7 +13,7 @@ function App() {
 
   const addJournalItem = (journalItem) => {
     setJournalItems((oldJournalItems) => [...oldJournalItems, {
-      id: Math.max(...oldJournalItems.map((el) => (el.id))) + 1,
+      id: oldJournalItems.length > 0 ? Math.max(...oldJournalItems.map((el) => (el.id))) + 1 : 1,
       title: journalItem.title,
       text: journalItem.text,
       date: new Date(journalItem.date)
