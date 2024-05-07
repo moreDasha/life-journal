@@ -3,3 +3,10 @@
   flex-direction: column;
   gap: 30px;
 }
+
+.journal-form-input {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  padding: 2px 6px;
+  transition: border-color .3s;
+}
