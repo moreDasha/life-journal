@@ -1,8 +1,8 @@
-import './NoteBody.css';
+import styles from './NoteBody.module.css';
 
 function NoteBody({ children }) {
   return (
-    <div className="note-body">
+    <div className={styles['note-body']}>
       {children}
     </div>
   );
