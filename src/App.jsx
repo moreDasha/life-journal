@@ -5,11 +5,29 @@ import NoteBody from './layouts/NoteBody/NoteBody';
 import NoteAddButton from './components/NoteAddButton/NoteAddButton';
 import NoteList from './components/NoteList/NoteList';
 import JournalForm from './components/JournalForm/JournalForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [journalItems, setJournalItems] = useState([]);
+
+  //забираем данный из локалсторедж
+  useEffect(() => {
+    const journalItemsData = JSON.parse(localStorage.getItem('journalItemsData'));
+    if (journalItemsData) {
+      setJournalItems(journalItemsData.map((item) => ({
+        ...item,
+        date: new Date(item.date)
+      })));
+    }
+  }, []);
+
+  //записываем данные в локалсторедж
+  useEffect(() => {
+    if(journalItems.length) {
+      localStorage.setItem('journalItemsData', JSON.stringify(journalItems));
+    }
+  }, [journalItems]);
 
   const addJournalItem = (journalItem) => {
     setJournalItems((oldJournalItems) => [...oldJournalItems, {
