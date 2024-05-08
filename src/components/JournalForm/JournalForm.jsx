@@ -16,31 +16,24 @@ function JournalForm ({ onSubmit }) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
-    let isValid = true;
 
     if (!formProps.title?.trim().length) {
-      isValid = false;
       setValidState((state) => ({...state, title: false}));
     } else {
-      isValid = true;
       setValidState((state) => ({...state, title: true}));
     }
     if (!formProps.date) {
-      isValid = false;
       setValidState((state) => ({...state, date: false}));
     } else {
-      isValid = true;
       setValidState((state) => ({...state, date: true}));
     }
     if (!formProps.text?.trim().length) {
-      isValid = false;
       setValidState((state) => ({...state, text: false}));
     } else {
-      isValid = true;
       setValidState((state) => ({...state, text: true}));
     }
 
-    if (isValid) {
+    if (formProps.title?.trim().length && formProps.date && formProps.text?.trim().length) {
       onSubmit(formProps);
     } else {
       return;
@@ -60,7 +53,7 @@ function JournalForm ({ onSubmit }) {
           <input className={cn(styles['journal-form-input'], styles['input-small'])} type="text" name="tag" placeholder="Добавьте теги"/>
         </div>
       </div>
-      <textarea className={cn(styles['journal-form-input'], {[styles['invalid']]: !validState.text})} name="text" placeholder="Добавьте описание"></textarea>
+      <textarea className={cn(styles['journal-form-input'], {[styles['invalid']]: !validState.text})} name="text" rows="10" placeholder="Добавьте описание"></textarea>
       <Button text="Сохранить"/>
     </form>
   );
