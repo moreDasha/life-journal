@@ -26,6 +26,11 @@ body {
   min-height: 100%;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
 img {
   display: block;
 }

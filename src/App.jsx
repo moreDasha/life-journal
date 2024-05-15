@@ -1,4 +1,3 @@
-import './App.css';
 import Header from './components/Header/Header';
 import NoteNav from './layouts/NoteNav/NoteNav';
 import NoteBody from './layouts/NoteBody/NoteBody';
@@ -6,6 +5,7 @@ import NoteAddButton from './components/NoteAddButton/NoteAddButton';
 import NoteList from './components/NoteList/NoteList';
 import JournalForm from './components/JournalForm/JournalForm';
 import { useEffect, useState } from 'react';
+import Main from './layouts/Main/Main';
 
 function App() {
 
@@ -40,14 +40,16 @@ function App() {
 
   return (
     <div className='app'>
-      <NoteNav>
-        <Header></Header>
-        <NoteAddButton/>
-        <NoteList items={journalItems}/>
-      </NoteNav>
-      <NoteBody>
-        <JournalForm onSubmit={addJournalItem}/>
-      </NoteBody>
+      <Header/>
+      <Main>
+        <NoteNav>
+          <NoteAddButton/>
+          <NoteList items={journalItems}/>
+        </NoteNav>
+        <NoteBody>
+          <JournalForm onSubmit={addJournalItem}/>
+        </NoteBody>
+      </Main>
     </div>
   );
 }
