@@ -1,9 +1,10 @@
+import { useEffect, useReducer, useRef } from 'react';
 import styles from './JournalForm.module.css';
 import cn from 'classnames';
 import { initialState, formReducer } from './JournalFormState';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import InputName from '../InputName/InputName';
-import { useEffect, useReducer, useRef } from 'react';
 
 function JournalForm ({ onSubmit }) {
 
@@ -63,24 +64,24 @@ function JournalForm ({ onSubmit }) {
   return (
     <form className={styles['journal-form']} onSubmit={addJournalItem}>
 
-      <input className={cn(styles['journal-form-input'], styles['input-title'], {[styles['invalid']]: !isValid.title})} ref={titleRef} type="text" name="title" placeholder="Добавьте заголовок" onChange={onChange} value={values.title}/>
+      <Input ref={titleRef} className={cn(styles['journal-form-input'], styles['input-title'], {[styles['invalid']]: !isValid.date})} type="text" name="title" placeholder="Добавьте заголовок" onChange={onChange} value={values.title}/>
 
       <div className={styles['input-wrap']}>
         <div className={styles['input-small-wrap']}>
           <InputName src="/calendar.png" name="Дата"/>
 
-          <input className={cn(styles['journal-form-input'], styles['input-small'], {[styles['invalid']]: !isValid.date})} ref={dateRef} type="date" name="date" onChange={onChange} value={values.date}/>
+          <Input ref={dateRef} className={cn(styles['journal-form-input'], styles['input-small'], {[styles['invalid']]: !isValid.date})} type="date" name="date" onChange={onChange} value={values.date}/>
 
         </div>
         <div className={styles['input-small-wrap']}>
           <InputName src="/folder.png" name="Теги"/>
 
-          <input className={cn(styles['journal-form-input'], styles['input-small'])} type="text" name="tag" placeholder="Добавьте теги" onChange={onChange} value={values.tag}/>
+          <Input className={cn(styles['journal-form-input'], styles['input-small'])} type="text" name="tag" placeholder="Добавьте теги" onChange={onChange} value={values.tag}/>
 
         </div>
       </div>
 
-      <textarea className={cn(styles['journal-form-input'], {[styles['invalid']]: !isValid.text})} ref={textRef} name="text" rows="10" placeholder="Добавьте описание" onChange={onChange} value={values.text}></textarea>
+      <textarea ref={textRef} className={cn(styles['journal-form-input'], {[styles['invalid']]: !isValid.text})} name="text" rows="10" placeholder="Добавьте описание" onChange={onChange} value={values.text}></textarea>
 
       <Button text="Сохранить"/>
     </form>
