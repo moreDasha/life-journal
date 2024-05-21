@@ -1,54 +1,47 @@
-import './App.css';
+import { useLocalStorage } from './hooks/useLocalStorage.hook';
 import Header from './components/Header/Header';
 import NoteNav from './layouts/NoteNav/NoteNav';
 import NoteBody from './layouts/NoteBody/NoteBody';
 import NoteAddButton from './components/NoteAddButton/NoteAddButton';
 import NoteList from './components/NoteList/NoteList';
 import JournalForm from './components/JournalForm/JournalForm';
-import { useEffect, useState } from 'react';
+import Main from './layouts/Main/Main';
+import { TypeContextProvider } from './context/type.context';
+
+const mapItems = (items) => {
+  if (!items) {
+    return [];
+  }
+  return items.map((el) => ({...el, date: new Date(el.date)}));
+};
 
 function App() {
 
-  const [journalItems, setJournalItems] = useState([]);
+  const [items, setItems] = useLocalStorage('data');
 
-  //забираем данный из локалсторедж
-  useEffect(() => {
-    const journalItemsData = JSON.parse(localStorage.getItem('journalItemsData'));
-    if (journalItemsData) {
-      setJournalItems(journalItemsData.map((item) => ({
-        ...item,
-        date: new Date(item.date)
-      })));
-    }
-  }, []);
-
-  //записываем данные в локалсторедж
-  useEffect(() => {
-    if(journalItems.length) {
-      localStorage.setItem('journalItemsData', JSON.stringify(journalItems));
-    }
-  }, [journalItems]);
-
-  const addJournalItem = (journalItem) => {
-    setJournalItems((oldJournalItems) => [...oldJournalItems, {
-      id: oldJournalItems.length > 0 ? Math.max(...oldJournalItems.map((el) => (el.id))) + 1 : 1,
-      title: journalItem.title,
-      text: journalItem.text,
-      date: new Date(journalItem.date)
+  const addItem = (item) => {
+    setItems([...mapItems(items), {
+      ...item,
+      id: items ? Math.max(...items.map((el) => (el.id))) + 1 : 1,
+      date: new Date(item.date)
     }]);
   };
 
   return (
-    <div className='app'>
-      <NoteNav>
-        <Header></Header>
-        <NoteAddButton/>
-        <NoteList items={journalItems}/>
-      </NoteNav>
-      <NoteBody>
-        <JournalForm onSubmit={addJournalItem}/>
-      </NoteBody>
-    </div>
+    <TypeContextProvider>
+      <div className='app'>
+        <Header/>
+        <Main>
+          <NoteNav>
+            <NoteAddButton/>
+            <NoteList items={mapItems(items)}/>
+          </NoteNav>
+          <NoteBody>
+            <JournalForm onSubmit={addItem}/>
+          </NoteBody>
+        </Main>
+      </div>
+    </TypeContextProvider>
   );
 }
 

@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import styles from './NoteList.module.css';
 import CardButton from '../CardButton/CardButton';
 import JournalItem from '../JournalItem/JournalItem';
+import { TypeContext } from '../../context/type.context';
 
 function NoteList({ items }) {
+  const { typeId } = useContext(TypeContext);
 
   if (items.length === 0) {
     return (
@@ -21,13 +24,12 @@ function NoteList({ items }) {
 
     return (
       <div className={styles['note-list']}>
-        {items.sort(sortJournalItems).map(el => (
+        {items
+          .filter((el) => el.typeId === typeId)
+          .sort(sortJournalItems)
+          .map((el) => (
             <CardButton className={styles['note-list-item']} key={el.id}>
-              <JournalItem
-                title={el.title}
-                text={el.text}
-                date={el.date}
-               />
+              <JournalItem title={el.title} text={el.text} date={el.date} />
             </CardButton>
           ))}
       </div>
