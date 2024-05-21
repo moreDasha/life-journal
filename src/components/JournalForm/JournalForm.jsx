@@ -75,7 +75,6 @@ function JournalForm({ onSubmit }) {
 
   return (
     <form className={styles['journal-form']} onSubmit={addJournalItem}>
-      {typeId}
       <Input
         ref={titleRef}
         className={cn(styles['journal-form-input'], styles['input-title'], {
