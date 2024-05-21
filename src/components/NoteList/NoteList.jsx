@@ -4,7 +4,7 @@ import CardButton from '../CardButton/CardButton';
 import JournalItem from '../JournalItem/JournalItem';
 import { TypeContext } from '../../context/type.context';
 
-function NoteList({ items }) {
+function NoteList({ items, showItem }) {
   const { typeId } = useContext(TypeContext);
   const filteredItems = useMemo(() => items.filter((el) => el.typeId === typeId), [items, typeId]);
 
@@ -22,7 +22,7 @@ function NoteList({ items }) {
         {filteredItems
           .sort(sortJournalItems)
           .map((el) => (
-            <CardButton className={styles['note-list-item']} key={el.id}>
+            <CardButton className={styles['note-list-item']} key={el.id} onClick={() => showItem(el)}>
               <JournalItem title={el.title} text={el.text} date={el.date} />
             </CardButton>
           ))}
