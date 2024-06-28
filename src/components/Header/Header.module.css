@@ -10,3 +10,9 @@
 .logo {
   width: 180px;
 }
+
+@media (max-width: 990px) {
+  .header {
+    width: 100%;
+  }
+}

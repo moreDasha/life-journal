@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useLocalStorage } from './hooks/useLocalStorage.hook';
 import Header from './components/Header/Header';
-import NoteNav from './layouts/NoteNav/NoteNav';
-import NoteBody from './layouts/NoteBody/NoteBody';
-import NoteAddButton from './components/NoteAddButton/NoteAddButton';
-import NoteList from './components/NoteList/NoteList';
+import JournalNav from './layouts/JournalNav/JournalNav';
+import JournalBody from './layouts/JournalBody/JournalBody';
+import JournalAddButton from './components/JournalAddButton/JournalAddButton';
+import JournalList from './components/JournalList/JournalList';
 import JournalForm from './components/JournalForm/JournalForm';
 import Main from './layouts/Main/Main';
 import { TypeContextProvider } from './context/type.context';
@@ -19,7 +19,7 @@ const mapItems = (items) => {
 function App() {
 
   const [items, setItems] = useLocalStorage('data');
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const addItem = (item) => {
     if (item.id) {
@@ -42,6 +42,11 @@ function App() {
 
   const removeItem = (id) => {
     setItems([...items.filter(i => i.id !== id)]);
+    setSelectedItem();
+  };
+
+  const clearForm = () => {
+    setSelectedItem(null);
   };
 
   return (
@@ -49,13 +54,13 @@ function App() {
       <div className='app'>
         <Header/>
         <Main>
-          <NoteNav>
-            <NoteAddButton clearForm={() => setSelectedItem({})}/>
-            <NoteList items={mapItems(items)} showItem={setSelectedItem}/>
-          </NoteNav>
-          <NoteBody>
+          <JournalNav>
+            <JournalAddButton clearForm={clearForm}/>
+            <JournalList items={mapItems(items)} showItem={setSelectedItem}/>
+          </JournalNav>
+          <JournalBody>
             <JournalForm onSubmit={addItem} onRemove={removeItem} data={selectedItem}/>
-          </NoteBody>
+          </JournalBody>
         </Main>
       </div>
     </TypeContextProvider>

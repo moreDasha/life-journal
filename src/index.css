@@ -21,14 +21,24 @@ html {
 }
 
 body {
-  padding: 20px;
   min-width: 360px;
   min-height: 100%;
 }
 
 .app {
+  padding: 30px 30px 40px 30px;
   display: flex;
   flex-direction: column;
+  min-height: 535px;
+  height: 100vh;
+}
+
+@media (max-width: 990px)  {
+  .app {
+    padding: 30px 20px;
+    min-height: auto;
+    height: auto;
+  }
 }
 
 img {

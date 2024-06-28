@@ -31,11 +31,18 @@ function JournalForm({ onSubmit, data, onRemove }) {
 
   // заполняем форму при выборе воспоминания
   useEffect(() => {
+    if (!data) {
+      dispatchForm({ type: 'CLEAR' });
+      dispatchForm({
+        type: 'SET_VALUE',
+        payload: { typeId }
+      });
+    }
     dispatchForm({
       type: 'SET_VALUE',
       payload: { ...data }
     });
-  }, [data]);
+  }, [data, typeId]);
 
   // устанавливаем невалидность полей
   useEffect(() => {
@@ -103,13 +110,14 @@ function JournalForm({ onSubmit, data, onRemove }) {
           className={cn(styles['journal-form-input'], styles['input-title'], {
             [styles['invalid']]: !isValid.date
           })}
+          maxLength="62"
           type="text"
           name="title"
-          placeholder="Добавьте заголовок"
+          placeholder="Заголовок*"
           onChange={onChange}
           value={values.title}
         />
-        {data.id && (
+        {data?.id && (
           <button
             className={styles['remove-button']}
             type="button"
@@ -122,7 +130,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
 
       <div className={styles['input-wrap']}>
         <div className={styles['input-small-wrap']}>
-          <InputName src="/calendar.svg" name="Дата" />
+          <InputName src="/calendar.svg" name="Дата*" />
 
           <Input
             ref={dateRef}
@@ -144,6 +152,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
 
           <Input
             className={cn(styles['journal-form-input'], styles['input-small'])}
+            maxLength="40"
             type="text"
             name="tag"
             placeholder="Добавьте теги"
@@ -160,7 +169,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
         })}
         name="text"
         rows="10"
-        placeholder="Добавьте описание"
+        placeholder="Описание*"
         onChange={onChange}
         value={values.text}
       ></textarea>

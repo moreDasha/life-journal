@@ -1,14 +1,18 @@
-.note-list {
+.journal-list-wrap {
+
+}
+
+.journal-list {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.note-list__empty {
+.journal-list-wrap__empty {
   text-align: center;
 }
 
-.note-list-item {
+.journal-list-item {
   padding: 20px;
   display: block;
 }

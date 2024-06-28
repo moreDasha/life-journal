@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  height: 100%;
+}
+
+.journal-form > button {
+  margin-top: auto;
 }
 
 .journal-form-input {
@@ -15,7 +20,6 @@
 }
 
 .journal-form-input:-webkit-autofill,
-.journal-form-input:-webkit-autofill:hover,
 .journal-form-input:-webkit-autofill:focus {
   border: 1px solid rgb(91, 90, 90);
   -webkit-text-fill-color: #fff;
@@ -92,12 +96,20 @@ textarea {
   transition: transform 0.3s ease-in-out;
 }
 
-.remove-button:hover {
-  transform: scale(1.1);
-}
-
 .remove-button img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (any-hover: hover) {
+  .remove-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .journal-form-input:-webkit-autofill:hover {
+    border: 1px solid rgb(91, 90, 90);
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #181818 inset;
+  }
 }

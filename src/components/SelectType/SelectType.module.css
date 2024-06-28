@@ -23,7 +23,19 @@
   background-position: right 8px top 50%;
 }
 
-.select:hover,
 .select:focus {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (any-hover: hover) {
+  .select:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 990px) {
+  .select {
+    position: relative;
+    z-index: 100;
+  }
 }

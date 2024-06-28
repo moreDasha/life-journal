@@ -5,7 +5,10 @@ function Header() {
   return (
     <header className={styles['header']}>
       <img className={styles['logo']} src="/logo.svg" alt="лого" />
-      <TypeSelect/>
+      <div>
+        <TypeSelect/>
+        <img src="/menu.svg"/>
+      </div>
     </header>
   );
 }
