@@ -1,13 +1,16 @@
 import TypeSelect from '../SelectType/SelectType';
 import styles from './Header.module.css';
+import cn from 'classnames';
 
-function Header() {
+function Header({ navOpen, setNavOpen }) {
   return (
-    <header className={styles['header']}>
+    <header className={cn(styles['header'], {[styles['fixed']]: navOpen})}>
       <img className={styles['logo']} src="/logo.svg" alt="лого" />
-      <div>
+      <div className={styles['header-activity']}>
         <TypeSelect/>
-        <img src="/menu.svg"/>
+        <button className={styles['nav-open-button']} onClick={() => setNavOpen(!navOpen)}>
+          <img src="/menu.svg"/>
+        </button>
       </div>
     </header>
   );

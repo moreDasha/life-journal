@@ -6,6 +6,7 @@
 
 @media (max-width: 990px) {
   .main {
+    padding-top: 75px;
     grid-template-columns: 1fr;
     height: auto;
   }

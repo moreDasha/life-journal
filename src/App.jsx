@@ -21,6 +21,8 @@ function App() {
   const [items, setItems] = useLocalStorage('data');
   const [selectedItem, setSelectedItem] = useState(null);
 
+  const [navOpen, setNavOpen] = useState(false);
+
   const addItem = (item) => {
     if (item.id) {
       setItems([...mapItems(items).map(i => {
@@ -47,16 +49,17 @@ function App() {
 
   const clearForm = () => {
     setSelectedItem(null);
+    setNavOpen(!navOpen);
   };
 
   return (
     <TypeContextProvider>
       <div className='app'>
-        <Header/>
+        <Header navOpen={navOpen} setNavOpen={setNavOpen}/>
         <Main>
-          <JournalNav>
-            <JournalAddButton clearForm={clearForm}/>
-            <JournalList items={mapItems(items)} showItem={setSelectedItem}/>
+          <JournalNav navOpen={navOpen}>
+            <JournalAddButton clearForm={clearForm} />
+            <JournalList items={mapItems(items)} showItem={setSelectedItem} navOpen={navOpen} setNavOpen={setNavOpen}/>
           </JournalNav>
           <JournalBody>
             <JournalForm onSubmit={addItem} onRemove={removeItem} data={selectedItem}/>

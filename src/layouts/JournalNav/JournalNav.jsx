@@ -1,8 +1,9 @@
 import styles from './JournalNav.module.css';
+import cn from 'classnames';
 
-function JournalNav({ children }) {
+function JournalNav({ children, navOpen }) {
   return (
-    <nav className={styles['journal-nav']}>
+    <nav className={cn(styles['journal-nav'], {[styles['open']]: navOpen})}>
       {children}
     </nav>
   );

@@ -11,8 +11,47 @@
   width: 180px;
 }
 
+.header-activity {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-open-button {
+  display: none;
+}
+
+.nav-open-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (any-hover: hover) {
+  .nav-open-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
 @media (max-width: 990px) {
   .header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    margin: 0;
     width: 100%;
+    background-color: #181818;
+  }
+
+  .nav-open-button {
+    border: 2px solid rgb(74, 73, 73);
+    border-radius: 6px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color .3s;
   }
 }
