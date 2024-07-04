@@ -2,9 +2,9 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
+  border: 2px solid rgb(74, 73, 73);
   outline: none;
-  border-radius: 3px;
+  border-radius: 6px;
   padding: 8px 30px 8px 8px;
   height: fit-content;
   min-width: 90px;
@@ -23,7 +23,19 @@
   background-position: right 8px top 50%;
 }
 
-.select:hover,
 .select:focus {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (any-hover: hover) {
+  .select:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (max-width: 990px) {
+  .select {
+    position: relative;
+    z-index: 100;
+  }
 }

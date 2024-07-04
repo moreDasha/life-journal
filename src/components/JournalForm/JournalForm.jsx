@@ -7,7 +7,7 @@ import Input from '../Input/Input';
 import InputName from '../InputName/InputName';
 import { TypeContext } from '../../context/type.context.jsx';
 
-function JournalForm({ onSubmit }) {
+function JournalForm({ onSubmit, data, onRemove }) {
   const [formState, dispatchForm] = useReducer(formReducer, initialState);
   const { isValid, values, isReadyToSubmit } = formState;
   const titleRef = useRef();
@@ -29,6 +29,21 @@ function JournalForm({ onSubmit }) {
     }
   };
 
+  // заполняем форму при выборе воспоминания
+  useEffect(() => {
+    if (!data) {
+      dispatchForm({ type: 'CLEAR' });
+      dispatchForm({
+        type: 'SET_VALUE',
+        payload: { typeId }
+      });
+    }
+    dispatchForm({
+      type: 'SET_VALUE',
+      payload: { ...data }
+    });
+  }, [data, typeId]);
+
   // устанавливаем невалидность полей
   useEffect(() => {
     let timerId;
@@ -49,8 +64,12 @@ function JournalForm({ onSubmit }) {
     if (isReadyToSubmit) {
       onSubmit(values);
       dispatchForm({ type: 'CLEAR' });
+      dispatchForm({
+        type: 'SET_VALUE',
+        payload: { typeId }
+      });
     }
-  }, [isReadyToSubmit, onSubmit, values]);
+  }, [isReadyToSubmit, onSubmit, values, typeId]);
 
   // записываем айди контекста
   useEffect(() => {
@@ -73,24 +92,45 @@ function JournalForm({ onSubmit }) {
     dispatchForm({ type: 'SUBMIT' });
   };
 
+  // удаляем воспоминание
+  const removeJornalItem = () => {
+    onRemove(data.id);
+    dispatchForm({ type: 'CLEAR' });
+    dispatchForm({
+      type: 'SET_VALUE',
+      payload: { typeId }
+    });
+  };
+
   return (
     <form className={styles['journal-form']} onSubmit={addJournalItem}>
-      {typeId}
-      <Input
-        ref={titleRef}
-        className={cn(styles['journal-form-input'], styles['input-title'], {
-          [styles['invalid']]: !isValid.date
-        })}
-        type="text"
-        name="title"
-        placeholder="Добавьте заголовок"
-        onChange={onChange}
-        value={values.title}
-      />
+      <div className={styles['input-top-wrap']}>
+        <Input
+          ref={titleRef}
+          className={cn(styles['journal-form-input'], styles['input-title'], {
+            [styles['invalid']]: !isValid.date
+          })}
+          maxLength="62"
+          type="text"
+          name="title"
+          placeholder="Заголовок*"
+          onChange={onChange}
+          value={values.title}
+        />
+        {data?.id && (
+          <button
+            className={styles['remove-button']}
+            type="button"
+            onClick={removeJornalItem}
+          >
+            <img src="/remove.svg" alt="Удалить воспоминание" />
+          </button>
+        )}
+      </div>
 
       <div className={styles['input-wrap']}>
         <div className={styles['input-small-wrap']}>
-          <InputName src="/calendar.png" name="Дата" />
+          <InputName src="/calendar.svg" name="Дата*" />
 
           <Input
             ref={dateRef}
@@ -100,14 +140,19 @@ function JournalForm({ onSubmit }) {
             type="date"
             name="date"
             onChange={onChange}
-            value={values.date}
+            value={
+              values.date
+                ? new Date(values.date).toISOString().slice(0, 10)
+                : ''
+            }
           />
         </div>
         <div className={styles['input-small-wrap']}>
-          <InputName src="/folder.png" name="Теги" />
+          <InputName src="/folder.svg" name="Теги" />
 
           <Input
             className={cn(styles['journal-form-input'], styles['input-small'])}
+            maxLength="40"
             type="text"
             name="tag"
             placeholder="Добавьте теги"
@@ -124,7 +169,7 @@ function JournalForm({ onSubmit }) {
         })}
         name="text"
         rows="10"
-        placeholder="Добавьте описание"
+        placeholder="Описание*"
         onChange={onChange}
         value={values.text}
       ></textarea>

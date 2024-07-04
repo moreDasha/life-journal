@@ -1,0 +1,23 @@
+.journal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.journal-list-wrap__empty {
+  text-align: center;
+}
+
+.journal-list-item {
+  padding: 20px;
+  display: block;
+}
+
+@media (max-width: 990px) {
+  .journal-list-wrap {
+    max-height: calc(100vh - 95px - 43px - 30px);
+    max-height: calc(100dvh - 95px - 43px - 30px);
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+}

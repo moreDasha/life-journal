@@ -14,6 +14,8 @@
   background-color: #eb6ec1;
 }
 
-.accent:hover {
-  background-color: #f3a8da;
+@media (any-hover: hover) {
+  .accent:hover {
+    background-color: #f3a8da;
+  }
 }

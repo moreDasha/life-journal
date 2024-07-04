@@ -14,6 +14,8 @@ function TypeSelect() {
       <option value='1'>Поездки</option>
       <option value='2'>Учеба</option>
       <option value='3'>Работа</option>
+      <option value='4'>Выходные</option>
+      <option value='5'>Другое</option>
     </select>
   );
 }

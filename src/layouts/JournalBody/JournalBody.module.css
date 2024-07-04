@@ -1,0 +1,9 @@
+.journal-body {
+  padding-left: 30px;
+}
+
+@media (max-width: 990px) {
+  .journal-body {
+    padding: 0;
+  }
+}
