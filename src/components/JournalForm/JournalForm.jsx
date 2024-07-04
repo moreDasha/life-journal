@@ -123,14 +123,14 @@ function JournalForm({ onSubmit, data, onRemove }) {
             type="button"
             onClick={removeJornalItem}
           >
-            <img src="/remove.svg" alt="Удалить воспоминание" />
+            <img src="img/remove.svg" alt="Удалить воспоминание" />
           </button>
         )}
       </div>
 
       <div className={styles['input-wrap']}>
         <div className={styles['input-small-wrap']}>
-          <InputName src="/calendar.svg" name="Дата*" />
+          <InputName src="img/calendar.svg" name="Дата*" />
 
           <Input
             ref={dateRef}
@@ -148,7 +148,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
           />
         </div>
         <div className={styles['input-small-wrap']}>
-          <InputName src="/folder.svg" name="Теги" />
+          <InputName src="img/folder.svg" name="Теги" />
 
           <Input
             className={cn(styles['journal-form-input'], styles['input-small'])}

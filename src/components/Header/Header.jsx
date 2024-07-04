@@ -5,11 +5,11 @@ import cn from 'classnames';
 function Header({ navOpen, setNavOpen }) {
   return (
     <header className={cn(styles['header'], {[styles['fixed']]: navOpen})}>
-      <img className={styles['logo']} src="/logo.svg" alt="лого" />
+      <img className={styles['logo']} src="img/logo.svg" alt="лого" />
       <div className={styles['header-activity']}>
         <TypeSelect/>
         <button className={styles['nav-open-button']} onClick={() => setNavOpen(!navOpen)}>
-          <img src="/menu.svg"/>
+          <img src="img/menu.svg"/>
         </button>
       </div>
     </header>
