@@ -17,7 +17,7 @@
   color: #ffff;
   cursor: pointer;
   transition: background-color .3s;
-  background-image: url("/arrow-down.svg");
+  background-image: url("/img/arrow-down.svg");
   background-repeat: no-repeat;
   background-size: 14px 14px;
   background-position: right 8px top 50%;

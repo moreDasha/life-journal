@@ -9,7 +9,8 @@ function Header({ navOpen, setNavOpen }) {
       <div className={styles['header-activity']}>
         <TypeSelect/>
         <button className={styles['nav-open-button']} onClick={() => setNavOpen(!navOpen)}>
-          <img src="img/menu.svg"/>
+          <img src="img/menu.svg" alt='menu icon'/>
+          <img src="img/close.svg" alt='close menu icon' />
         </button>
       </div>
     </header>
