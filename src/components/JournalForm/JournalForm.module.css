@@ -13,9 +13,9 @@
   padding: 8px 10px;
   border: 2px solid transparent;
   border-radius: 6px;
-  background-color: transparent;
   color: var(--text-color);
   font-size: 14px;
+  background-color: var(--card-color);
   transition: all 0.3s ease-in-out;
 }
 
