@@ -2,7 +2,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 2px solid rgb(74, 73, 73);
+  border: 2px solid var(--decor-color);
   outline: none;
   border-radius: 6px;
   padding: 8px 30px 8px 8px;
@@ -13,23 +13,24 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 14px;
-  background-color: rgba(255, 255, 255, 0.03);
-  color: #ffff;
+  font-weight: 600;
+  background-color: var(--card-color);
+  color: var(--text-color);
   cursor: pointer;
   transition: background-color .3s;
-  background-image: url("/img/arrow-down.svg");
+  background-image: var(--arrow-img);
   background-repeat: no-repeat;
-  background-size: 14px 14px;
+  background-size: 12px 12px;
   background-position: right 8px top 50%;
 }
 
 .select:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--card-hover-color);
 }
 
 @media (any-hover: hover) {
   .select:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--card-hover-color);
   }
 }
 
