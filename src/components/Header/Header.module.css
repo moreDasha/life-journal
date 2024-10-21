@@ -9,6 +9,12 @@
 
 .logo {
   width: 180px;
+  aspect-ratio: 147 / 37;
+  align-self: flex-end;
+  background-image: var(--logo-img);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom left;
 }
 
 .header-activity {
@@ -20,15 +26,9 @@
   display: none;
 }
 
-.nav-open-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 @media (any-hover: hover) {
   .nav-open-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--card-hover-color);
   }
 }
 
@@ -41,17 +41,28 @@
     padding: 30px 20px;
     margin: 0;
     width: 100%;
-    background-color: #181818;
+    background-color: var(--background-color);
   }
 
   .nav-open-button {
-    border: 2px solid rgb(74, 73, 73);
+    border: 2px solid var(--decor-color);
+    padding: 0;
     border-radius: 6px;
-    display: block;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--card-color);
+    background-image: var(--menu-img);
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+    background-position: center center;
     cursor: pointer;
     transition: background-color .3s;
+  }
+
+  .header.fixed .nav-open-button {
+    background-image: var(--close-img);
   }
 }

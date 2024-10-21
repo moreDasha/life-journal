@@ -108,7 +108,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
         <Input
           ref={titleRef}
           className={cn(styles['journal-form-input'], styles['input-title'], {
-            [styles['invalid']]: !isValid.date
+            [styles['invalid']]: !isValid.title
           })}
           maxLength="62"
           type="text"
@@ -129,7 +129,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
       </div>
 
       <div className={styles['input-wrap']}>
-        <div className={styles['input-small-wrap']}>
+        <label className={styles['input-small-wrap']}>
           <InputName src="img/calendar.svg" name="Дата*" />
 
           <Input
@@ -146,8 +146,8 @@ function JournalForm({ onSubmit, data, onRemove }) {
                 : ''
             }
           />
-        </div>
-        <div className={styles['input-small-wrap']}>
+        </label>
+        <label className={styles['input-small-wrap']}>
           <InputName src="img/folder.svg" name="Теги" />
 
           <Input
@@ -159,7 +159,7 @@ function JournalForm({ onSubmit, data, onRemove }) {
             onChange={onChange}
             value={values.tag}
           />
-        </div>
+        </label>
       </div>
 
       <textarea

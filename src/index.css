@@ -1,14 +1,33 @@
 :root {
-  font-family: "Source Sans 3", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #181818;
+  --background-color: #181818;
+  --text-color: #ffffff;
+  --accent-color: #eb6ec1;
+  --accent-hover-color: #c14999;
+  --card-color: rgba(255, 255, 255, 0.03);
+  --card-hover-color: rgba(255, 255, 255, 0.1);
+  --decor-color: rgb(97, 97, 97);
+  --date-opacity: 0.35;
+  --logo-img: url("/img/logo-dark.svg");
+  --arrow-img: url("/img/arrow-down-dark.svg");
+  --menu-img: url("/img/menu-dark.svg");
+  --close-img: url("/img/close-dark.svg");
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #eeeded;
+    --text-color: #181818;
+    --accent-color: #e5a9d1;
+    --accent-hover-color: #d78abe;
+    --card-color: rgba(0, 0, 0, 0.03);
+    --card-hover-color: rgba(0, 0, 0, 0.1);
+    --decor-color: rgb(137, 136, 136);
+    --date-opacity: 0.45;
+    --logo-img: url("/img/logo-light.svg");
+    --arrow-img: url("/img/arrow-down-light.svg");
+    --menu-img: url("/img/menu-light.svg");
+    --close-img: url("/img/close-light.svg");
+  }
 }
 
 * {
@@ -18,6 +37,16 @@
 
 html {
   height: 100%;
+  font-family: "Source Sans 3", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {

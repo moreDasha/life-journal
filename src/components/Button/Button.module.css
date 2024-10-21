@@ -5,17 +5,18 @@
   width: fit-content;
   font-family: inherit;
   font-size: 16px;
-  color: #ffff;
+  font-weight: 600;
+  color: var(--text-color);
   cursor: pointer;
   transition: background-color .3s;
 }
 
 .accent {
-  background-color: #eb6ec1;
+  background-color: var(--accent-color);
 }
 
 @media (any-hover: hover) {
   .accent:hover {
-    background-color: #f3a8da;
+    background-color: var(--accent-hover-color);
   }
 }
