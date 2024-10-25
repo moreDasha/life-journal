@@ -1,4 +1,20 @@
 :root {
+  --background-color: #eeeded;
+    --text-color: #181818;
+    --accent-color: #e5a9d1;
+    --accent-hover-color: #d78abe;
+    --card-color: rgba(0, 0, 0, 0.03);
+    --card-hover-color: rgba(0, 0, 0, 0.1);
+    --decor-color: rgb(137, 136, 136);
+    --date-opacity: 0.45;
+    --logo-img: url("/img/logo-light.svg");
+    --arrow-img: url("/img/arrow-down-light.svg");
+    --menu-img: url("/img/menu-light.svg");
+    --close-img: url("/img/close-light.svg");
+    --switcher-filter: invert(0)
+}
+
+:root[data-color-scheme="dark"] {
   --background-color: #181818;
   --text-color: #ffffff;
   --accent-color: #eb6ec1;
@@ -11,28 +27,16 @@
   --arrow-img: url("/img/arrow-down-dark.svg");
   --menu-img: url("/img/menu-dark.svg");
   --close-img: url("/img/close-dark.svg");
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background-color: #eeeded;
-    --text-color: #181818;
-    --accent-color: #e5a9d1;
-    --accent-hover-color: #d78abe;
-    --card-color: rgba(0, 0, 0, 0.03);
-    --card-hover-color: rgba(0, 0, 0, 0.1);
-    --decor-color: rgb(137, 136, 136);
-    --date-opacity: 0.45;
-    --logo-img: url("/img/logo-light.svg");
-    --arrow-img: url("/img/arrow-down-light.svg");
-    --menu-img: url("/img/menu-light.svg");
-    --close-img: url("/img/close-light.svg");
-  }
+  --switcher-filter: invert(100%);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 html {
