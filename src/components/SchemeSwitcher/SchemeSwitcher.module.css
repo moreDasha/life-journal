@@ -1,0 +1,75 @@
+.switcher {
+  position: relative;
+  border: 2px solid var(--decor-color);
+  border-radius: 30px;
+  padding: 0;
+  display: flex;
+  width: fit-content;
+  background-color: var(--card-color);
+}
+
+.switcher-selected {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.switcher-selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  width: 36px;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform: translateX(100%);
+  transition: all .3s;
+}
+
+.switcher-btn {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 24px;
+  filter: var(--switcher-filter);
+}
+
+.switcher-btn:nth-child(1) {
+  background-image: url("/img/sun.svg");
+}
+
+.switcher-btn:nth-child(2) {
+  background-image: url("/img/auto.svg");
+  background-size: 18px;
+}
+
+.switcher-btn:nth-child(3) {
+  background-image: url("/img/moon.svg");
+}
+
+.switcher-btn:nth-child(1).checked ~ .switcher-selected::after {
+  transform: translateX(0);
+}
+
+.switcher-btn:nth-child(2).checked ~ .switcher-selected::after {
+  transform: translateX(100%);
+}
+
+.switcher-btn:nth-child(3).checked ~ .switcher-selected::after {
+  transform: translateX(200%);
+}
+
+@media (min-width: 991px) {
+  .switcher.mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .switcher.desktop {
+    display: none;
+  }
+}

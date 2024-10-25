@@ -8,6 +8,7 @@ import JournalList from './components/JournalList/JournalList';
 import JournalForm from './components/JournalForm/JournalForm';
 import Main from './layouts/Main/Main';
 import { TypeContextProvider } from './context/type.context';
+import SchemeSwitcher from './components/SchemeSwitcher/SchemeSwitcher';
 
 const mapItems = (items) => {
   if (!items) {
@@ -58,6 +59,7 @@ function App() {
         <Header navOpen={navOpen} setNavOpen={setNavOpen}/>
         <Main>
           <JournalNav navOpen={navOpen}>
+            <SchemeSwitcher device='mobile'/>
             <JournalAddButton clearForm={clearForm} />
             <JournalList items={mapItems(items)} showItem={setSelectedItem} navOpen={navOpen} setNavOpen={setNavOpen}/>
           </JournalNav>
